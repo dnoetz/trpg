@@ -1,0 +1,16 @@
+namespace RPG.Core.Entities;
+
+public class PlayerRogue : Character
+{
+    public PlayerRogue(string name) : base(name)
+    {
+        MaxHitpoints = 150;
+        CurrentHitpoints = MaxHitpoints;
+        Agility = 9;
+        Intelligence = 1;
+        Strength = 2;
+        Vitality = 4;
+        Charisma = 4;
+    }
+
+}

@@ -1,4 +1,4 @@
-namespace RPG.Core.Entities;
+namespace RPG.Core.Entities.Characters;
 
 public abstract class Character
 {

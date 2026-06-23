@@ -7,7 +7,7 @@ public abstract class Monster
     public int MaxHitpoints { get; protected set; }
     public int CurrentHitpoints { get; protected set; }
     public int ExperienceAwarded { get; protected set; }
-    public bool IsBoss { get; protected set; }
+    public bool IsBoss { get; protected set; } = false;
 
     public Monster(string name)
     {

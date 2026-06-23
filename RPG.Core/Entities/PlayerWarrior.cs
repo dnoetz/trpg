@@ -6,10 +6,10 @@ public class PlayerWarrior : Character
     {
         MaxHitpoints = 200;
         CurrentHitpoints = MaxHitpoints;
-        Agility = 4;
+        Agility = 3;
         Intelligence = 1;
         Strength = 8;
-        Vitality = 5;
+        Vitality = 6;
         Charisma = 2;
     }
 

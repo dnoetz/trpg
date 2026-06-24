@@ -13,4 +13,8 @@ public class PlayerWarrior : Character
         Charisma = 2;
     }
 
+    override public int DealDamage()
+    {
+        return 40;
+    }
 }

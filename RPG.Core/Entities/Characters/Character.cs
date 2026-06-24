@@ -61,10 +61,7 @@ public abstract class Character : ICombatant
         Charisma += addChr;
     }
 
-    public int DealDamage()
-    {
-        return 40;
-    }
+    public abstract int DealDamage();
 
     public void CombatDeath()
     {

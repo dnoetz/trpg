@@ -13,5 +13,9 @@ public class PlayerNecromancer : Character
         Charisma = 3;
     }
 
-    
+    override public int DealDamage()
+    {
+        return 40;
+    }
+
 }

@@ -1,4 +1,4 @@
-namespace RPG.Core.Entities.Characters;
+namespace RPG.Core.Entities.Characters.Rogue;
 
 public class PlayerRogue : Character
 {

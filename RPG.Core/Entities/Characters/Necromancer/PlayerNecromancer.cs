@@ -1,4 +1,4 @@
-namespace RPG.Core.Entities.Characters;
+namespace RPG.Core.Entities.Characters.Necromancer;
 
 public class PlayerNecromancer : Character
 {

@@ -1,6 +1,8 @@
+using RPG.Core.Interfaces;
+
 namespace RPG.Core.Entities.Characters;
 
-public abstract class Character
+public abstract class Character : ICombatant
 {
     public int Id { get; protected set; }
     public string Name { get; protected set; }
@@ -13,6 +15,7 @@ public abstract class Character
     public int Strength { get; protected set; }
     public int Vitality { get; protected set; }
     public int Charisma { get; protected set; }
+    public bool IsDead { get; protected set; } = false;
 
     protected Character(string name)
     {
@@ -56,6 +59,16 @@ public abstract class Character
         Strength += addStr;
         Vitality += addVit;
         Charisma += addChr;
+    }
+
+    public int DealDamage()
+    {
+        return 40;
+    }
+
+    public void CombatDeath()
+    {
+        IsDead = true;
     }
 
 }

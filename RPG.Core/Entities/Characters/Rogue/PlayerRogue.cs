@@ -2,6 +2,7 @@ namespace RPG.Core.Entities.Characters.Rogue;
 
 public class PlayerRogue : Character
 {
+    public override int MainStat => Agility;
     public PlayerRogue(string name) : base(name)
     {
         MaxHitpoints = 150;

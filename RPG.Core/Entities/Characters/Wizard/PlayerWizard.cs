@@ -2,6 +2,7 @@ namespace RPG.Core.Entities.Characters.Wizard;
 
 public class PlayerWizard : Character
 {
+    public override int MainStat => Intelligence;
     public PlayerWizard(string name) : base(name)
     {
         MaxHitpoints = 125;

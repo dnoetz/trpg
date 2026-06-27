@@ -15,6 +15,7 @@ public abstract class Character : ICombatant
     public int Strength { get; protected set; }
     public int Vitality { get; protected set; }
     public int Charisma { get; protected set; }
+    public abstract int MainStat { get; }
     public bool IsDead { get; protected set; } = false;
 
     protected Character(string name)

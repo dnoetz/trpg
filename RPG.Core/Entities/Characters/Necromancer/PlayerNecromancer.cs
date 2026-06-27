@@ -5,6 +5,7 @@ namespace RPG.Core.Entities.Characters.Necromancer;
 public class PlayerNecromancer : Character
 {
     public List<ICombatAbility> Abilities { get; protected set; }
+    public override int MainStat => Intelligence;
     public PlayerNecromancer(string name) : base(name)
     {
         MaxHitpoints = 100;

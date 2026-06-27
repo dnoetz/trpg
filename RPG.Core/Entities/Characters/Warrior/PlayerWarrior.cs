@@ -2,6 +2,7 @@ namespace RPG.Core.Entities.Characters.Warrior;
 
 public class PlayerWarrior : Character
 {
+    public override int MainStat => Strength;
     public PlayerWarrior(string name) : base(name)
     {
         MaxHitpoints = 200;

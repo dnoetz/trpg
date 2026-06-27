@@ -15,22 +15,35 @@ public class CombatService
     public void ExecuteTurn(ICombatant player, ICombatant enemy)
     {
         int roll = _roller.Roll6();
-        if (roll > 3)
+        if (player is Character character && enemy is Monster monster)
         {
-            enemy.TakeDamage(player.DealDamage());
-        }
-        else
-        {
-            player.TakeDamage(enemy.DealDamage());
-        }
-        if (enemy.IsDead && player is Character character && enemy is Monster monster)
-        {
-            character.EarnExp(monster.ExperienceAwarded);
-            if (character.ExperienceToLevel <= 0)
+            if (roll > 3)
             {
-                character.LevelUp();
+                if (roll > 4)
+                {
+                    //move damage calculation into separate DamageCalculatorService to keep logic thin
+                    //crit var for testing, remove and place logic into TakeDamage() later
+                    int crit = character.MainStat + character.DealDamage();
+                    monster.TakeDamage(crit);
+                    //console.writeline below for testing, remove later
+                    Console.WriteLine($"Critical hit for {crit} damage!");
+                }
+                else{
+                    monster.TakeDamage(character.DealDamage());
+                }
+            }
+            else
+            {
+                character.TakeDamage(monster.DealDamage());
+            }
+            if (monster.IsDead)
+            {
+                character.EarnExp(monster.ExperienceAwarded);
+                if (character.ExperienceToLevel <= 0)
+                {
+                    character.LevelUp();
+                }
             }
         }
     }
-
 }

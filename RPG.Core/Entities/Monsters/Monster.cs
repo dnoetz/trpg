@@ -32,9 +32,4 @@ public abstract class Monster : ICombatant
         return 25;
     }
 
-    public void CombatDeath()
-    {
-        IsDead = true;
-    }
-
 }

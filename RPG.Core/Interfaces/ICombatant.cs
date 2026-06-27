@@ -9,5 +9,4 @@ public interface ICombatant
 
     void TakeDamage(int damage);
     int DealDamage();
-    void CombatDeath();
 }

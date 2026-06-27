@@ -30,6 +30,7 @@ public abstract class Character : ICombatant
         if (CurrentHitpoints < 0)
         {
             CurrentHitpoints = 0;
+            IsDead = true;
         }
     }
 
@@ -62,10 +63,5 @@ public abstract class Character : ICombatant
     }
 
     public abstract int DealDamage();
-
-    public void CombatDeath()
-    {
-        IsDead = true;
-    }
 
 }

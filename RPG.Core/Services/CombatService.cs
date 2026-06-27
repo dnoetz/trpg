@@ -1,3 +1,4 @@
+using RPG.Core.Entities.Characters;
 using RPG.Core.Entities.Monsters;
 using RPG.Core.Interfaces;
 
@@ -11,16 +12,24 @@ public class CombatService
         _roller = new DiceRollerService();
     }
 
-    public void ExecuteTurn(ICombatant player, ICombatant monster)
+    public void ExecuteTurn(ICombatant player, ICombatant enemy)
     {
         int roll = _roller.Roll6();
         if (roll > 3)
         {
-            monster.TakeDamage(player.DealDamage());
+            enemy.TakeDamage(player.DealDamage());
         }
         else
         {
-            player.TakeDamage(monster.DealDamage());
+            player.TakeDamage(enemy.DealDamage());
+        }
+        if (enemy.IsDead && player is Character character && enemy is Monster monster)
+        {
+            character.EarnExp(monster.ExperienceAwarded);
+            if (character.ExperienceToLevel <= 0)
+            {
+                character.LevelUp();
+            }
         }
     }
 

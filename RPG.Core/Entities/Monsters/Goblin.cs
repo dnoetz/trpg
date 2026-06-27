@@ -6,7 +6,7 @@ public class Goblin : Monster
     {
         MaxHitpoints = 75;
         CurrentHitpoints = MaxHitpoints;
-        ExperienceAwarded = 2;
+        ExperienceAwarded = 13;
     }
 
 }

@@ -29,7 +29,7 @@ public abstract class Monster : ICombatant
 
     public int DealDamage()
     {
-        return 25;
+        return 10;
     }
 
 }

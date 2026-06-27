@@ -14,7 +14,7 @@ public class AbilityNecrosis : ICombatAbility
         Name = "Necrosis";
         Description = "Inflict your foe with dark energy, dealing 30 immediate damage.";
         DamageType = "Plague";
-        BaseDamage = 40;
+        BaseDamage = 15;
     }
 
 }

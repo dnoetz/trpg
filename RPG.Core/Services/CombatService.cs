@@ -7,9 +7,11 @@ namespace RPG.Core.Services;
 public class CombatService
 {
     private readonly DiceRollerService _roller;
+    private readonly DamageCalculatorService _damage;
     public CombatService()
     {
         _roller = new DiceRollerService();
+        _damage = new DamageCalculatorService();
     }
 
     public void ExecuteTurn(ICombatant player, ICombatant enemy)
@@ -19,17 +21,19 @@ public class CombatService
         {
             if (roll > 3)
             {
-                if (roll > 4)
+                if (roll == 6)
                 {
-                    //move damage calculation into separate DamageCalculatorService to keep logic thin
                     //crit var for testing, remove and place logic into TakeDamage() later
-                    int crit = character.MainStat + character.DealDamage();
+                    int crit = _damage.CalculateCriticalDamage(character);
                     monster.TakeDamage(crit);
                     //console.writeline below for testing, remove later
                     Console.WriteLine($"Critical hit for {crit} damage!");
                 }
-                else{
-                    monster.TakeDamage(character.DealDamage());
+                else
+                {
+                    int damage = _damage.CalculateDamage(character, roll);
+                    monster.TakeDamage(damage);
+                    Console.WriteLine($"Hit for {damage} damage!");
                 }
             }
             else
@@ -41,7 +45,7 @@ public class CombatService
                 character.EarnExp(monster.ExperienceAwarded);
                 if (character.ExperienceToLevel <= 0)
                 {
-                    character.LevelUp();
+                    character.LevelUp(30, 2, 2, 2, 2, 2);
                 }
             }
         }

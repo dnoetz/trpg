@@ -6,9 +6,9 @@ public class DamageCalculatorService
 {
     private readonly DiceRollerService _roller;
 
-    public DamageCalculatorService()
+    public DamageCalculatorService(DiceRollerService roller)
     {
-        _roller = new DiceRollerService();
+        _roller = roller;
     }
 
     public int CalculateCriticalDamage(Character player)

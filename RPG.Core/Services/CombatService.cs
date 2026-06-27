@@ -8,18 +8,21 @@ public class CombatService
 {
     private readonly DiceRollerService _roller;
     private readonly DamageCalculatorService _damage;
+    private readonly ExperienceService _exp;
     public CombatService()
     {
         _roller = new DiceRollerService();
-        _damage = new DamageCalculatorService();
+        _damage = new DamageCalculatorService(_roller);
+        _exp = new ExperienceService();
     }
 
-    public void ExecuteTurn(ICombatant player, ICombatant enemy)
+    public void ExecuteCombatTurn(ICombatant player, ICombatant enemy)
     {
+        int initiative = _roller.Roll20();
         int roll = _roller.Roll6();
         if (player is Character character && enemy is Monster monster)
         {
-            if (roll > 3)
+            if (initiative > 5)
             {
                 if (roll == 6)
                 {
@@ -42,7 +45,7 @@ public class CombatService
             }
             if (monster.IsDead)
             {
-                character.EarnExp(monster.ExperienceAwarded);
+                _exp.AwardExp(character, monster);
                 if (character.ExperienceToLevel <= 0)
                 {
                     character.LevelUp(30, 2, 2, 2, 2, 2);

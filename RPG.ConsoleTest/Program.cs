@@ -9,10 +9,14 @@ var combat = new CombatService();
 Console.WriteLine($"Player HP: {necromancer.CurrentHitpoints}");
 Console.WriteLine($"Monster HP: {monster.CurrentHitpoints}");
 
-while(monster.IsDead == false)
+while(!monster.IsDead)
 {
-combat.ExecuteTurn(necromancer, monster);
+    Console.WriteLine("Turn Begin");
+    combat.ExecuteCombatTurn(necromancer, monster);
 
-Console.WriteLine($"Player HP: {necromancer.CurrentHitpoints}");
-Console.WriteLine($"Monster HP: {monster.CurrentHitpoints}");
-};
+    Console.WriteLine($"Player HP: {necromancer.CurrentHitpoints}");
+    Console.WriteLine($"Monster HP: {monster.CurrentHitpoints}");
+    Console.WriteLine($"Player Level: {necromancer.Level}");
+    Console.WriteLine("Turn End");
+}
+

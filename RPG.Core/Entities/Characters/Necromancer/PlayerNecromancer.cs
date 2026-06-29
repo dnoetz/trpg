@@ -20,7 +20,7 @@ public class PlayerNecromancer : Character
         Abilities.Add(Necrosis);
     }
 
-    override public int DealDamage()
+    public override int DealDamage()
     {
         return Abilities[0].BaseDamage;
     }

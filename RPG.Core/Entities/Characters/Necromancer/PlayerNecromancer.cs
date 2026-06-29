@@ -4,8 +4,14 @@ namespace RPG.Core.Entities.Characters.Necromancer;
 
 public class PlayerNecromancer : Character
 {
-    public List<ICombatAbility> Abilities { get; protected set; }
+    public List<ICombatAbility> Abilities { get; } = 
+        [
+            new AbilityNecrosis(),
+            new AbilityReapersMark()
+        ];
     public override int MainStat => Intelligence;
+    
+    
     public PlayerNecromancer(string name) : base(name)
     {
         MaxHitpoints = 100;
@@ -15,9 +21,6 @@ public class PlayerNecromancer : Character
         Strength = 1;
         Vitality = 3;
         Charisma = 3;
-        Abilities = new List<ICombatAbility>();
-        ICombatAbility Necrosis = new AbilityNecrosis();
-        Abilities.Add(Necrosis);
     }
 
     public override int DealDamage()

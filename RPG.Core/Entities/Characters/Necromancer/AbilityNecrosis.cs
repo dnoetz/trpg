@@ -12,7 +12,7 @@ public class AbilityNecrosis : ICombatAbility
     public AbilityNecrosis()
     {
         Name = "Necrosis";
-        Description = "Inflict your foe with dark energy, dealing 30 immediate damage.";
+        Description = $"Inflict your foe with dark energy, dealing immediate damage.";
         DamageType = "Plague";
         BaseDamage = 15;
     }

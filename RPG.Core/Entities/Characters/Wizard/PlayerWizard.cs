@@ -14,7 +14,7 @@ public class PlayerWizard : Character
         Charisma = 1;
     }
 
-    override public int DealDamage()
+    public override int DealDamage()
     {
         return 40;
     }

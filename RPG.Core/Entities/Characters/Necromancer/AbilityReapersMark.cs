@@ -16,4 +16,14 @@ public class AbilityReapersMark : ICombatAbility
         DamageType = "Physical";
         BaseDamage = 7;
     }
+
+    public int Execute(Character player)
+    {
+        if (player is PlayerNecromancer necromancer)
+        {
+            return BaseDamage * necromancer.UndeadRaised;
+        }
+
+        return 0;
+    }
 }

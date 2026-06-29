@@ -17,4 +17,8 @@ public class AbilityNecrosis : ICombatAbility
         BaseDamage = 15;
     }
 
+    public int Execute(Character player)
+    {
+        return BaseDamage;
+    }
 }

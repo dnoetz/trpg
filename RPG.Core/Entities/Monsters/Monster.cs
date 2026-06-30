@@ -2,7 +2,7 @@ using RPG.Core.Interfaces;
 
 namespace RPG.Core.Entities.Monsters;
 
-public abstract class Monster : ICombatant
+public abstract class Monster
 {
     public int Id { get; protected set; }
     public string Name { get; protected set; }

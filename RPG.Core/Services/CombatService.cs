@@ -1,6 +1,5 @@
 using RPG.Core.Entities.Characters;
 using RPG.Core.Entities.Monsters;
-using RPG.Core.Interfaces;
 
 namespace RPG.Core.Services;
 
@@ -16,41 +15,38 @@ public class CombatService
         _exp = new ExperienceService();
     }
 
-    public void ExecuteCombatTurn(ICombatant player, ICombatant enemy)
+    public void ExecuteCombatTurn(Character player, Monster enemy)
     {
         int initiative = _roller.Roll20();
         int roll = _roller.Roll6();
-        if (player is Character character && enemy is Monster monster)
-        {
             if (initiative > 5)
             {
                 if (roll == 6)
                 {
                     //crit var for testing, remove and place logic into TakeDamage() later
-                    int crit = _damage.CalculateCriticalDamage(character);
-                    monster.TakeDamage(crit);
-                    //console.writeline below for testing, remove later
+                    int crit = _damage.CalculateCriticalDamage(player);
+                    enemy.TakeDamage(crit);
+                    //console.WriteLine below for testing, remove later
                     Console.WriteLine($"Critical hit for {crit} damage!");
                 }
                 else
                 {
-                    int damage = _damage.CalculateDamage(character, roll);
-                    monster.TakeDamage(damage);
+                    int damage = _damage.CalculateDamage(player, roll);
+                    enemy.TakeDamage(damage);
                     Console.WriteLine($"Hit for {damage} damage!");
                 }
             }
             else
             {
-                character.TakeDamage(monster.DealDamage());
+                player.TakeDamage(enemy.DealDamage());
             }
-            if (monster.IsDead)
+            if (enemy.IsDead)
             {
-                _exp.AwardExp(character, monster);
-                if (character.ExperienceToLevel <= 0)
+                _exp.AwardExp(player, enemy);
+                if (player.ExperienceToLevel <= 0)
                 {
-                    character.LevelUp(30, 2, 2, 2, 2, 2);
+                    player.LevelUp(30, 2, 2, 2, 2, 2);
                 }
             }
-        }
     }
 }

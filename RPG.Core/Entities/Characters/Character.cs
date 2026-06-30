@@ -2,7 +2,7 @@ using RPG.Core.Interfaces;
 
 namespace RPG.Core.Entities.Characters;
 
-public abstract class Character : ICombatant
+public abstract class Character
 {
     public int Id { get; protected set; }
     public string Name { get; protected set; }

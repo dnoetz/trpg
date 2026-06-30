@@ -4,21 +4,13 @@ namespace RPG.Core.Entities.Characters.Necromancer;
 
 public class AbilityNecrosis : ICombatAbility
 {
-    public string Name { get; }
-    public string Description { get; }
-    public string DamageType { get; }
-    public int BaseDamage { get; }
-
-    public AbilityNecrosis()
-    {
-        Name = "Necrosis";
-        Description = $"Inflict your foe with dark energy, dealing immediate damage.";
-        DamageType = "Plague";
-        BaseDamage = 15;
-    }
+    public string Name { get; } = "Necrosis";
+    public string Description { get; } = $"Inflict your foe with dark energy, dealing immediate damage.";
+    public string DamageType { get; } = "Plague";
+    public int BaseDamage { get; } = 15;
 
     public int Execute(Character player)
     {
-        return BaseDamage;
+        return BaseDamage + player.MainStat;
     }
 }

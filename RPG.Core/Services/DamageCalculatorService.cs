@@ -11,14 +11,14 @@ public class DamageCalculatorService
         _roller = roller;
     }
 
-    public int CalculateCriticalDamage(Character player)
+    public int CalculateCriticalDamage(Character player, string abilityName)
     {
-        return player.DealDamage() + (player.MainStat * 2);
+        return Convert.ToInt32(player.DealDamage(abilityName) * 1.5);
     }
 
-    public int CalculateDamage(Character player, int rollValue)
+    public int CalculateDamage(Character player, int rollValue, string abilityName)
     {
-        return player.DealDamage() + (rollValue * 2);
+        return player.DealDamage(abilityName) + (rollValue);
     }
 
 

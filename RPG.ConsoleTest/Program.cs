@@ -16,7 +16,7 @@ Console.WriteLine($"Monster HP: {monster.CurrentHitpoints}");
 while(!monster.IsDead)
 {
     Console.WriteLine("Turn Begin");
-    combat.ExecuteCombatTurn(necromancer, monster, "ReapersMark");
+    combat.ExecuteCombatTurn(necromancer, monster, "ReapersMark", 15, 4);
 
     Console.WriteLine($"Player HP: {necromancer.CurrentHitpoints}");
     Console.WriteLine($"Monster HP: {monster.CurrentHitpoints}");

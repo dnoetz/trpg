@@ -15,11 +15,8 @@ public class CombatService
         _exp = new ExperienceService();
     }
 
-    public void ExecuteCombatTurn(Character player, Monster enemy, string abilityName)
+    public void ExecuteCombatTurn(Character player, Monster enemy, string abilityName, int initiative, int roll)
     {
-        int initiative = _roller.Roll20();
-        int roll = _roller.Roll6();
-        
         if (initiative > 5)
         {
             if (roll == 6)
